@@ -1,18 +1,24 @@
+---
+layout: default
+---
+
 # Day 1 — The Retrieval Problem
 
-## Demo First
-Search: "wireless mouse"
-Search: "wirless mause"
+## 🔥 Demo
 
-Why does one fail?
+Search:
+- wireless mouse
+- wirless mause
+
+Why does this fail?
 
 ---
 
-## Pipeline
+## ⚙️ How Search Works
+
 ```mermaid
 graph LR
-    A[User Query] --> B[Tokenization]
+    A[Query] --> B[Tokenization]
     B --> C[Inverted Index]
     C --> D[Matching]
     D --> E[Ranking]
-    E --> F[Results]
