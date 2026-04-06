@@ -1,5 +1,5 @@
 
-# 2. How Search Works
+# How Search Works
 
 At a high level, search follows a pipeline:
 

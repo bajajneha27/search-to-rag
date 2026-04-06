@@ -5,3 +5,6 @@ authors = ["Neha Bajaj"]
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "ayu"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
