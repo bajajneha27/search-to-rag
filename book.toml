@@ -2,9 +2,9 @@
 title = "Search to RAG Workshop"
 authors = ["Neha Bajaj"]
 
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "ayu"
-
-[preprocessor.mermaid]
-command = "mdbook-mermaid"

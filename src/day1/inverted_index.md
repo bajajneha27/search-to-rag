@@ -31,11 +31,13 @@ graph TD
     E --> G["Intersect"]
     F --> G
     G --> H["Doc1"]
-
-### Speaker Notes
+```
+<details>
+<summary> Speaker Notes </summary>
 
 - Start with: "Imagine we scan every document — too slow"
 - Emphasize: "We precompute this structure"
 - Walk through the table slowly
 - Ask: "Which document contains both words?"
 - Pause before saying "intersection"
+</details>

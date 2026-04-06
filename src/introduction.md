@@ -5,7 +5,7 @@ This workshop explores how search systems work, from traditional keyword-based a
 
 ---
 
-## What you'll learn
+### What you'll learn
 
 - How traditional search works
 - Why it fails in some cases
@@ -14,9 +14,9 @@ This workshop explores how search systems work, from traditional keyword-based a
 
 ---
 
-## Agenda
+### Agenda
 
-### Day 1 — Foundations of Search (60–70 min)
+#### Day 1 — Foundations of Search (60–70 min)
 
 - Demo: A Simple Search (10 min)
 - How Search Works (10 min)
@@ -25,7 +25,7 @@ This workshop explores how search systems work, from traditional keyword-based a
 - Where Search Breaks (10 min)
 - Search at Scale (10 min)
 
-### Day 2 — Modern Search with AI (60–70 min)
+#### Day 2 — Modern Search with AI (60–70 min)
 
 - Demo: Searching by Meaning (10 min)
 - Embeddings (15 min)

@@ -35,10 +35,13 @@ Instead of exact match:
 graph LR
     A["wirless"] --> B["Did you mean: wireless"]
     B --> C["Results"]
+```
 
-### Speaker Notes
+<details>
+<summary> Speaker Notes </summary>
 
 - Ask: "Have you ever mistyped a query?"
 - Show failure first
 - Then say: "Search systems are forgiving"
 - Keep it intuitive, avoid algorithm details
+</details>

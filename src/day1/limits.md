@@ -29,10 +29,13 @@ graph LR
     F --> G
     G --> H[Merge & Rank]
     H --> I[Response]
+```
 
-### Speaker Notes
+<details>
+<summary> Speaker Notes </summary>
 
 - Say: "Same logic, just many machines"
 - Point at shards and say: "These run in parallel"
 - Emphasize latency: "milliseconds"
 - Avoid deep distributed system details
+</details>
