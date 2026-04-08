@@ -1,5 +1,5 @@
 
-# Handling Typos: Fuzzy Search
+# Fuzzy Search & Tolerant Retrieval
 
 What happens if the query has a typo?
 
@@ -17,31 +17,14 @@ Exact matching fails:
 
 ## Solution: Fuzzy Matching
 
-Instead of exact match:
-- find similar words
+- Edit distance  
+- k-gram indexing  
+- phonetic matching  
+- dictionary-based correction  
 
 ---
 
-## Idea (intuition)
+## Wildcard Queries
 
-- small spelling differences are allowed
-- system suggests closest valid term
-
----
-
-## Example
-
-```mermaid
-graph LR
-    A["wirless"] --> B["Did you mean: wireless"]
-    B --> C["Results"]
-```
-
-<details>
-<summary> Speaker Notes </summary>
-
-- Ask: "Have you ever mistyped a query?"
-- Show failure first
-- Then say: "Search systems are forgiving"
-- Keep it intuitive, avoid algorithm details
-</details>
+Example:
+mous*

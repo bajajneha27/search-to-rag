@@ -5,10 +5,12 @@
 # Day 1 — Foundations of Search
 
 - [Demo: A Simple Search](day1/demo.md)
-- [How Search Works](day1/pipeline.md)
+- [What is Information Retrieval?](day1/pipeline.md)
+- [Query Processing](day1/tokenization.md)
 - [The Inverted Index](day1/inverted_index.md)
-- [Handling Typos: Fuzzy Search](day1/fuzzy_search.md)
-- [Where Search Breaks](day1/limits.md)
+- [Handling Typos: Fuzzy Search & Tolerant Retrieval](day1/fuzzy_search.md)
+- [Limits of Keyword Search](day1/limits.md)
+- [Search at Scale](day1/scale.md)
 
 # Day 2 — The RAG Solution
 
@@ -16,5 +18,5 @@
 - [From Words to Meaning: Embeddings](day2/embeddings.md)
 - [Semantic Search](day2/semantic_search.md)
 - [Retrieval-Augmented Generation](day2/rag.md)
-- [Putting It All Together](day2/evolution.md)
+- [Vector Search](day2/evolution.md)
 - [Modern Search Systems](day2/modern.md)

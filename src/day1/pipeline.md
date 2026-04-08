@@ -1,12 +1,32 @@
 
-# How Search Works
+# What is Information Retrieval?
 
-At a high level, search follows a pipeline:
+An Information Retrieval (IR) system retrieves relevant documents for a given query.
 
-```mermaid
-graph LR
-    A[Query] --> B[Tokenization]
-    B --> C[Index Lookup]
-    C --> D[Matching]
-    D --> E[Ranking]
-```
+---
+
+## Key difference from databases
+
+- Databases → exact match  
+- IR systems → relevance-based  
+
+---
+
+## Speed requirement
+
+Search systems must respond in milliseconds.
+
+To achieve this:
+- heavy computation is done beforehand  
+- efficient data structures are built  
+- query-time work is minimized  
+
+---
+
+## Pipeline
+
+Query → Process → Retrieve → Rank → Results
+
+---
+
+Let’s break it down.

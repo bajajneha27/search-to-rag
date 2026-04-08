@@ -7,4 +7,4 @@ command = "mdbook-mermaid"
 
 [output.html]
 default-theme = "light"
-preferred-dark-theme = "ayu"
+preferred-dark-theme = "navy"

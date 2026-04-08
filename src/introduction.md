@@ -18,11 +18,12 @@ This workshop explores how search systems work, from traditional keyword-based a
 
 #### Day 1 — Foundations of Search (60–70 min)
 
-- Demo: A Simple Search (10 min)
-- How Search Works (10 min)
-- Inverted Index (10 min)
-- Fuzzy Search (10 min)
-- Where Search Breaks (10 min)
+- Demo: A Simple Search (5 min)
+- What is Information Retrieval? (5 min)
+- Query Processing ( 10 min)
+- Inverted Index (15 min)
+- Fuzzy Search (5 min)
+- Limits of Keyword Search (5 min)
 - Search at Scale (10 min)
 
 #### Day 2 — Modern Search with AI (60–70 min)

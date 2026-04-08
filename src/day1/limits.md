@@ -1,41 +1,23 @@
 
-# Where Search Breaks
+# Limits of Keyword Search
 
-So far, we’ve seen search on small data.
-Real systems operate at massive scale.
-
----
-
-## Challenges
-
-- Billions of documents
-- Very low latency (milliseconds)
-- Constant updates
-- Fault tolerance
+Example:
+device for presentations
 
 ---
 
-## High-Level Architecture
+## Problem
 
-```mermaid
-graph LR
-    A[User Query] --> B[Frontend]
-    B --> C[Query Processor]
-    C --> D[Shard 1]
-    C --> E[Shard 2]
-    C --> F[Shard N]
-    D --> G[Results]
-    E --> G
-    F --> G
-    G --> H[Merge & Rank]
-    H --> I[Response]
-```
+No keyword overlap.
 
-<details>
-<summary> Speaker Notes </summary>
+---
 
-- Say: "Same logic, just many machines"
-- Point at shards and say: "These run in parallel"
-- Emphasize latency: "milliseconds"
-- Avoid deep distributed system details
-</details>
+## Synonyms
+
+We can map:
+cheap → budget
+
+But this does not scale.
+
+---
+Language is too flexible for keyword matching.

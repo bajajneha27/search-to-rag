@@ -1,6 +1,11 @@
 
 # The Inverted Index
 
+Imagine a room full of books.
+
+You are asked:
+Find all books containing the word "mouse".
+
 | Term      | Documents       |
 |----------|----------------|
 | wireless | 1              |
@@ -19,19 +24,38 @@ Intersection → 1
 
 ---
 
-## Visualization
+## Terminology
 
-```mermaid
-graph TD
-    A["wireless mouse"] --> B["tokens"]
-    B --> C["wireless"]
-    B --> D["mouse"]
-    C --> E["Doc1"]
-    D --> F["Doc1, Doc2, Doc3"]
-    E --> G["Intersect"]
-    F --> G
-    G --> H["Doc1"]
-```
+- Term = word  
+- Postings list = list of documents
+
+---
+
+## Query
+
+wireless mouse
+
+→ lookup both  
+→ intersect results  
+→ Doc1  
+
+---
+
+## Storage
+
+- stored on disk  
+- cached in memory for fast access  
+
+---
+
+## Data structures
+
+- hash tables  
+- B-trees  
+
+
+----
+
 <details>
 <summary> Speaker Notes </summary>
 
