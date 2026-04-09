@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Limits of Keyword Search - Search to RAG Workshop</title>
+        <title>Limits of Traditional Search - Search to RAG Workshop</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-83a4ad09.js";
+            window.path_to_searchindex_js = "../searchindex-084b3fe4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-32579dac.js"></script>
+        <script src="../toc-268410e3.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -174,19 +174,14 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="limits-of-keyword-search"><a class="header" href="#limits-of-keyword-search">Limits of Keyword Search</a></h1>
-<p>Example:
-device for presentations</p>
-<hr>
-<h2 id="problem"><a class="header" href="#problem">Problem</a></h2>
-<p>No keyword overlap.</p>
-<hr>
-<h2 id="synonyms"><a class="header" href="#synonyms">Synonyms</a></h2>
-<p>We can map:
-cheap → budget</p>
-<p>But this does not scale.</p>
-<hr>
-<p>Language is too flexible for keyword matching.</p>
+                        <h1 id="limits-of-traditional-search"><a class="header" href="#limits-of-traditional-search">Limits of Traditional Search</a></h1>
+<p>Traditional search, or lexical search, is incredibly fast and reliable for finding exact matches, but it has significant limitations when it comes to understanding the meaning behind a user’s query.</p>
+<ul>
+<li><strong>The “Keyword Gap”</strong>: If a recruiter writes a job description for a “Software Engineer” but a student searches for “Developer,” a basic lexical engine might miss the result entirely because the strings don’t match.</li>
+<li><strong>Lack of Context (Polysemy)</strong>: A search for “Apple” could be looking for the fruit 🍏 or the technology company 💻.</li>
+<li><strong>Sentence Structure and Intent</strong>: Flights <em>from</em> London <em>to</em> New York</li>
+<li><strong>Limited Multi-modal Capabilities</strong>: Traditional indexing is built for text. It cannot natively “understand” the content of an image, a video, or an audio file unless there is explicit text metadata (like tags or descriptions) attached to it.</li>
+</ul>
 
                     </main>
 
