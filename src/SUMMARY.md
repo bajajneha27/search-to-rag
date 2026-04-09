@@ -7,8 +7,8 @@
 - [Introduction to Search Engine](day1/intro.md)
 - [Indexing](day1/indexing.md)
 - [The Inverted Index](day1/inverted_index.md)
-- [Query Processing](day1/tokenization.md)
-- [Handling Typos: Fuzzy Search & Tolerant Retrieval](day1/fuzzy_search.md)
+- [Query Processing](day1/searching.md)
+- [Fuzzy Search](day1/fuzzy_search.md)
 - [Limits of Keyword Search](day1/limits.md)
 - [Search at Scale](day1/scale.md)
 
