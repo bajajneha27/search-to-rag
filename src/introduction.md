@@ -28,8 +28,9 @@ This workshop explores how search systems work, from traditional keyword-based a
 
 #### Day 2 — Modern Search with AI (60–70 min)
 
-- Demo: Searching by Meaning (10 min)
+- Searching by Meaning (5 min)
 - Embeddings (15 min)
 - Semantic Search (10 min)
-- RAG (15 min)
-- Putting It All Together (10 min)
+- Vector Search (15 min)
+- RAG ( Retrieval-Augmented Generation) (10 min)
+- Demo: Mini AI Search App ( 5 min)

@@ -14,9 +14,9 @@
 
 # Day 2 — The RAG Solution
 
-- [Demo: Searching by Meaning](day2/demo.md)
-- [From Words to Meaning: Embeddings](day2/embeddings.md)
+- [Searching by Meaning](day2/demo.md)
+- [Embeddings](day2/embeddings.md)
 - [Semantic Search](day2/semantic_search.md)
-- [Retrieval-Augmented Generation](day2/rag.md)
 - [Vector Search](day2/evolution.md)
-- [Modern Search Systems](day2/modern.md)
+- [Retrieval-Augmented Generation](day2/rag.md)
+- [Demo: Mini AI Search App](day2/modern.md)

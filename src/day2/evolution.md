@@ -1,10 +1,19 @@
 
-# 11. Putting It All Together
+# Vector Search
 
-Compare different approaches:
+Vector search finds similar items using embeddings.
 
-| Query | Keyword | Fuzzy | Semantic |
-|------|--------|------|---------|
-| wireless mouse | ✅ | ✅ | ✅ |
-| wirless mause | ❌ | ✅ | ✅ |
-| presentation device | ❌ | ❌ | ✅ |
+---
+
+## Process
+
+1. Convert query to vector  
+2. Search for nearest vectors  
+3. Retrieve similar documents
+
+---
+
+## Key Difference
+
+Traditional search → exact lookup  
+Vector search → nearest neighbor search  

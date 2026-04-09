@@ -1,5 +1,5 @@
 
-# 12. Modern Search Systems
+# 12. Demo: Mini AI Search App
 
 Modern systems combine multiple techniques:
 

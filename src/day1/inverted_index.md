@@ -15,15 +15,6 @@ Find all books containing the word "mouse".
 
 ---
 
-## Query: "wireless mouse"
-
-- wireless → 1  
-- mouse → 1, 2, 3  
-
-Intersection → 1
-
----
-
 ## Terminology
 
 - Term = word  
@@ -35,15 +26,16 @@ Intersection → 1
 
 wireless mouse
 
-→ lookup both  
-→ intersect results  
-→ Doc1  
+- wireless → 1  
+- mouse → 1, 2, 3  
+
+Intersection → 1
 
 ---
 
 ## Storage
 
-- stored on disk  
+- stored on disk
 - cached in memory for fast access  
 
 ---
@@ -51,17 +43,4 @@ wireless mouse
 ## Data structures
 
 - hash tables  
-- B-trees  
-
-
-----
-
-<details>
-<summary> Speaker Notes </summary>
-
-- Start with: "Imagine we scan every document — too slow"
-- Emphasize: "We precompute this structure"
-- Walk through the table slowly
-- Ask: "Which document contains both words?"
-- Pause before saying "intersection"
-</details>
+- B-trees
