@@ -23,7 +23,7 @@ This workshop explores how search systems work, from traditional keyword-based a
 - Inverted Index (15 min)
 - Query Processing ( 10 min)
 - Fuzzy Search (5 min)
-- Limits of Keyword Search (5 min)
+- Limits of Traditional Search (5 min)
 - Search at Scale (10 min)
 
 #### Day 2 — Modern Search with AI (60–70 min)

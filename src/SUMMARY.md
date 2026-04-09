@@ -9,7 +9,7 @@
 - [The Inverted Index](day1/inverted_index.md)
 - [Query Processing](day1/searching.md)
 - [Fuzzy Search](day1/fuzzy_search.md)
-- [Limits of Keyword Search](day1/limits.md)
+- [Limits of Traditional Search](day1/limits.md)
 - [Search at Scale](day1/scale.md)
 
 # Day 2 — The RAG Solution
