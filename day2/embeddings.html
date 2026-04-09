@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d9b084b1.js";
+            window.path_to_searchindex_js = "../searchindex-58b277df.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-c7a355e7.js"></script>
+        <script src="../toc-64d7a585.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -175,22 +175,50 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="8-from-words-to-meaning-embeddings"><a class="header" href="#8-from-words-to-meaning-embeddings">8. From Words to Meaning: Embeddings</a></h1>
-<p>Embeddings convert text into numerical vectors.</p>
+<p>At the heart of AI search is the transformation of unstructured text into high-dimensional numerical vectors.</p>
+<p>An embedding is a vector (list) of floating point numbers. The distance between two vectors measures their relatedness. Small distances suggest high relatedness and large distances suggest low relatedness.</p>
 <hr>
-<h2 id="idea"><a class="header" href="#idea">Idea</a></h2>
-<p>Words with similar meanings are placed closer together in vector space.</p>
-<hr>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Embeddings are commonly used for:</p>
 <ul>
-<li>car ≈ automobile</li>
-<li>mouse ≈ pointer</li>
+<li><strong>Search</strong> (where results are ranked by relevance to a query string)</li>
+<li><strong>Clustering</strong> (where text strings are grouped by similarity)</li>
+<li><strong>Recommendations</strong> (where items with related text strings are recommended)</li>
+<li><strong>Anomaly detection</strong> (where outliers with little relatedness are identified)</li>
+<li><strong>Diversity measurement</strong> (where similarity distributions are analyzed)</li>
+<li><strong>Classification</strong> (where text strings are classified by their most similar label)</li>
 </ul>
 <hr>
-<h2 id="key-insight"><a class="header" href="#key-insight">Key Insight</a></h2>
-<p>We compare vectors instead of words.</p>
+<h2 id="generating-embeddings"><a class="header" href="#generating-embeddings">Generating Embeddings</a></h2>
+<pre><code class="language-python">from sentence_transformers import SentenceTransformer
+
+# 1. Load a pre-trained model (all-MiniLM-L6-v2 is fast and efficient)
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# 2. Define our "documents"
+sentences = [
+    "The cat sits outside", 
+    "A man is playing guitar", 
+    "The feline is resting outdoors"
+]
+
+# 3. Encode the sentences into vectors
+embeddings = model.encode(sentences)
+
+# 4. Check the shape (Dimension of this specific model is 384)
+print(f"Embedding shape: {embeddings.shape}")
+# Result: (3, 384)
+</code></pre>
 <hr>
-<h2 id="how-generated"><a class="header" href="#how-generated">How generated?</a></h2>
-<p>Using machine learning models trained on large text data.</p>
+<h2 id="the-mathematical-distance"><a class="header" href="#the-mathematical-distance">The Mathematical Distance</a></h2>
+<p>To determine “relevance,” we calculate the distance between the query vector ($q$) and document vectors ($d$).</p>
+<ul>
+<li><strong>Cosine Similarity</strong>: Measures the angle between vectors.</li>
+</ul>
+<pre><code>$$\text{sim}(q, d) = \frac{q \cdot d}{\|q\| \|d\|}$$
+</code></pre>
+<ul>
+<li><strong>Euclidean Distance ($L2$)</strong>: Measures the straight-line distance.</li>
+</ul>
 
                     </main>
 
@@ -200,7 +228,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../day2/semantic_search.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../day2/vector_databases.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -214,7 +242,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../day2/semantic_search.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../day2/vector_databases.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

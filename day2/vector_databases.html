@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Semantic Search - Search to RAG Workshop</title>
+        <title>Vector Databases - Search to RAG Workshop</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d9b084b1.js";
+            window.path_to_searchindex_js = "../searchindex-58b277df.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-c7a355e7.js"></script>
+        <script src="../toc-64d7a585.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -174,8 +174,24 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="9-semantic-search"><a class="header" href="#9-semantic-search">9. Semantic Search</a></h1>
-<p>Instead of matching words, we match meaning.</p>
+                        <h1 id="vector-databases"><a class="header" href="#vector-databases">Vector Databases</a></h1>
+<p>Calculating exact Cosine Similarity across millions of documents is $O(N)$ and too slow for real-time apps. We use <strong>Approximate Nearest Neighbors (ANN)</strong>.</p>
+<hr>
+<h2 id="key-technologies"><a class="header" href="#key-technologies">Key Technologies:</a></h2>
+<ul>
+<li>
+<p><strong>HNSW (Hierarchical Navigable Small World)</strong>: A graph-based approach that allows for lightning-fast lookups.</p>
+</li>
+<li>
+<p><strong>Product Quantization (PQ)</strong>: Compressing vectors to save memory.</p>
+</li>
+<li>
+<p><strong>Vector DBs</strong>: Tools like Qdrant, Weaviate, or Pinecone manage these indexes and provide CRUD operations for vectors.</p>
+</li>
+<li>
+<p><strong>AlloyDB</strong>: Handles vector at scale using <code>pgvector</code> extension. It introduces a <code>VECTOR</code> column. It supports IVFFlat and HNSW directly within the SQL environment. You use standard SQL with vector operators (like &lt;-&gt; for Euclidean distance or &lt;#&gt; for inner product).</p>
+</li>
+</ul>
 
                     </main>
 

@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d9b084b1.js";
+            window.path_to_searchindex_js = "../searchindex-58b277df.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-c7a355e7.js"></script>
+        <script src="../toc-64d7a585.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -175,30 +175,13 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="10-retrieval-augmented-generation"><a class="header" href="#10-retrieval-augmented-generation">10. Retrieval-Augmented Generation</a></h1>
-<p>RAG combines retrieval with language models.</p>
+<p>Semantic search is the “Engine” inside the Retrieval-Augmented Generation (RAG) pattern.</p>
 <hr>
-<h2 id="problem"><a class="header" href="#problem">Problem</a></h2>
-<p>LLMs:</p>
 <ul>
-<li>may hallucinate</li>
-<li>lack real-time knowledge</li>
-</ul>
-<hr>
-<h2 id="solution"><a class="header" href="#solution">Solution</a></h2>
-<ol>
-<li>Retrieve relevant documents</li>
-<li>Pass them to LLM</li>
-<li>Generate answer</li>
-</ol>
-<hr>
-<h2 id="flow"><a class="header" href="#flow">Flow</a></h2>
-<p>Query → Retrieve → Generate</p>
-<hr>
-<h2 id="benefit"><a class="header" href="#benefit">Benefit</a></h2>
-<ul>
-<li>grounded answers</li>
-<li>more accurate</li>
-<li>context-aware</li>
+<li><strong>User Query</strong>: “How do I fix a leaky pipe?</li>
+<li><strong>Retrieve</strong>: Convert query to vector $\rightarrow$ Find top 3 relevant chunks in the Vector DB.</li>
+<li><strong>Augment</strong>: Feed the retrieved text + the original query into an LLM.</li>
+<li><strong>Generate</strong>: The LLM provides a grounded, conversational answer.</li>
 </ul>
 
                     </main>

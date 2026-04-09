@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Searching by Meaning - Search to RAG Workshop</title>
+        <title>Introduction: Beyond Keywords - Search to RAG Workshop</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d9b084b1.js";
+            window.path_to_searchindex_js = "../searchindex-58b277df.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-c7a355e7.js"></script>
+        <script src="../toc-64d7a585.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,8 +177,16 @@
                         <h1 id="7-demo-searching-by-meaning"><a class="header" href="#7-demo-searching-by-meaning">7. Demo: Searching by Meaning</a></h1>
 <p>Let’s revisit a query:</p>
 <p>“device for presentations”</p>
-<p>Traditional search fails because there is no keyword overlap.</p>
-<p>Semantic search retrieves results based on meaning, not exact words.</p>
+<p>Traditional search relies on Lexical Overlap (TF-IDF, BM25). While fast, it suffers from two major flaws:</p>
+<ul>
+<li>
+<p><strong>The Synonym Problem</strong>: Searching “feline” won’t find a document containing only the word “cat.”</p>
+</li>
+<li>
+<p><strong>Polysemy</strong>: The word “bank” means something different in “river bank” vs. “investment bank.”</p>
+</li>
+</ul>
+<p>Semantic Search shifts the focus from matching <strong>words</strong> to matching <strong>meaning</strong> (intent and context).</p>
 
                     </main>
 

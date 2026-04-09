@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-d9b084b1.js";
+            window.path_to_searchindex_js = "searchindex-58b277df.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c7a355e7.js"></script>
+        <script src="toc-64d7a585.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -199,9 +199,9 @@
 </ul>
 <h4 id="day-2--modern-search-with-ai-6070-min"><a class="header" href="#day-2--modern-search-with-ai-6070-min">Day 2 — Modern Search with AI (60–70 min)</a></h4>
 <ul>
-<li>Searching by Meaning (5 min)</li>
+<li>Introduction: Beyond Keywords (5 min)</li>
 <li>Embeddings (15 min)</li>
-<li>Semantic Search (10 min)</li>
+<li>Vector Databases (10 min)</li>
 <li>Vector Search (15 min)</li>
 <li>RAG ( Retrieval-Augmented Generation) (10 min)</li>
 <li>Demo: Mini AI Search App ( 5 min)</li>
@@ -410,32 +410,84 @@ cheap → budget</p>
 <h1 id="7-demo-searching-by-meaning"><a class="header" href="#7-demo-searching-by-meaning">7. Demo: Searching by Meaning</a></h1>
 <p>Let’s revisit a query:</p>
 <p>“device for presentations”</p>
-<p>Traditional search fails because there is no keyword overlap.</p>
-<p>Semantic search retrieves results based on meaning, not exact words.</p>
+<p>Traditional search relies on Lexical Overlap (TF-IDF, BM25). While fast, it suffers from two major flaws:</p>
+<ul>
+<li>
+<p><strong>The Synonym Problem</strong>: Searching “feline” won’t find a document containing only the word “cat.”</p>
+</li>
+<li>
+<p><strong>Polysemy</strong>: The word “bank” means something different in “river bank” vs. “investment bank.”</p>
+</li>
+</ul>
+<p>Semantic Search shifts the focus from matching <strong>words</strong> to matching <strong>meaning</strong> (intent and context).</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="8-from-words-to-meaning-embeddings"><a class="header" href="#8-from-words-to-meaning-embeddings">8. From Words to Meaning: Embeddings</a></h1>
-<p>Embeddings convert text into numerical vectors.</p>
+<p>At the heart of AI search is the transformation of unstructured text into high-dimensional numerical vectors.</p>
+<p>An embedding is a vector (list) of floating point numbers. The distance between two vectors measures their relatedness. Small distances suggest high relatedness and large distances suggest low relatedness.</p>
 <hr>
-<h2 id="idea"><a class="header" href="#idea">Idea</a></h2>
-<p>Words with similar meanings are placed closer together in vector space.</p>
-<hr>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Embeddings are commonly used for:</p>
 <ul>
-<li>car ≈ automobile</li>
-<li>mouse ≈ pointer</li>
+<li><strong>Search</strong> (where results are ranked by relevance to a query string)</li>
+<li><strong>Clustering</strong> (where text strings are grouped by similarity)</li>
+<li><strong>Recommendations</strong> (where items with related text strings are recommended)</li>
+<li><strong>Anomaly detection</strong> (where outliers with little relatedness are identified)</li>
+<li><strong>Diversity measurement</strong> (where similarity distributions are analyzed)</li>
+<li><strong>Classification</strong> (where text strings are classified by their most similar label)</li>
 </ul>
 <hr>
-<h2 id="key-insight"><a class="header" href="#key-insight">Key Insight</a></h2>
-<p>We compare vectors instead of words.</p>
+<h2 id="generating-embeddings"><a class="header" href="#generating-embeddings">Generating Embeddings</a></h2>
+<pre><code class="language-python">from sentence_transformers import SentenceTransformer
+
+# 1. Load a pre-trained model (all-MiniLM-L6-v2 is fast and efficient)
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# 2. Define our "documents"
+sentences = [
+    "The cat sits outside", 
+    "A man is playing guitar", 
+    "The feline is resting outdoors"
+]
+
+# 3. Encode the sentences into vectors
+embeddings = model.encode(sentences)
+
+# 4. Check the shape (Dimension of this specific model is 384)
+print(f"Embedding shape: {embeddings.shape}")
+# Result: (3, 384)
+</code></pre>
 <hr>
-<h2 id="how-generated"><a class="header" href="#how-generated">How generated?</a></h2>
-<p>Using machine learning models trained on large text data.</p>
+<h2 id="the-mathematical-distance"><a class="header" href="#the-mathematical-distance">The Mathematical Distance</a></h2>
+<p>To determine “relevance,” we calculate the distance between the query vector ($q$) and document vectors ($d$).</p>
+<ul>
+<li><strong>Cosine Similarity</strong>: Measures the angle between vectors.</li>
+</ul>
+<pre><code>$$\text{sim}(q, d) = \frac{q \cdot d}{\|q\| \|d\|}$$
+</code></pre>
+<ul>
+<li><strong>Euclidean Distance ($L2$)</strong>: Measures the straight-line distance.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="9-semantic-search"><a class="header" href="#9-semantic-search">9. Semantic Search</a></h1>
-<p>Instead of matching words, we match meaning.</p>
+<h1 id="vector-databases"><a class="header" href="#vector-databases">Vector Databases</a></h1>
+<p>Calculating exact Cosine Similarity across millions of documents is $O(N)$ and too slow for real-time apps. We use <strong>Approximate Nearest Neighbors (ANN)</strong>.</p>
+<hr>
+<h2 id="key-technologies"><a class="header" href="#key-technologies">Key Technologies:</a></h2>
+<ul>
+<li>
+<p><strong>HNSW (Hierarchical Navigable Small World)</strong>: A graph-based approach that allows for lightning-fast lookups.</p>
+</li>
+<li>
+<p><strong>Product Quantization (PQ)</strong>: Compressing vectors to save memory.</p>
+</li>
+<li>
+<p><strong>Vector DBs</strong>: Tools like Qdrant, Weaviate, or Pinecone manage these indexes and provide CRUD operations for vectors.</p>
+</li>
+<li>
+<p><strong>AlloyDB</strong>: Handles vector at scale using <code>pgvector</code> extension. It introduces a <code>VECTOR</code> column. It supports IVFFlat and HNSW directly within the SQL environment. You use standard SQL with vector operators (like &lt;-&gt; for Euclidean distance or &lt;#&gt; for inner product).</p>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="vector-search"><a class="header" href="#vector-search">Vector Search</a></h1>
-<p>Vector search finds similar items using embeddings.</p>
+<p>When we move from keyword search to semantic search, we stop looking for exact string matches and start looking for the nearest neighbors in a high-dimensional space.</p>
 <hr>
 <h2 id="process"><a class="header" href="#process">Process</a></h2>
 <ol>
@@ -448,30 +500,13 @@ cheap → budget</p>
 <p>Traditional search → exact lookup<br>Vector search → nearest neighbor search</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="10-retrieval-augmented-generation"><a class="header" href="#10-retrieval-augmented-generation">10. Retrieval-Augmented Generation</a></h1>
-<p>RAG combines retrieval with language models.</p>
+<p>Semantic search is the “Engine” inside the Retrieval-Augmented Generation (RAG) pattern.</p>
 <hr>
-<h2 id="problem-2"><a class="header" href="#problem-2">Problem</a></h2>
-<p>LLMs:</p>
 <ul>
-<li>may hallucinate</li>
-<li>lack real-time knowledge</li>
-</ul>
-<hr>
-<h2 id="solution"><a class="header" href="#solution">Solution</a></h2>
-<ol>
-<li>Retrieve relevant documents</li>
-<li>Pass them to LLM</li>
-<li>Generate answer</li>
-</ol>
-<hr>
-<h2 id="flow"><a class="header" href="#flow">Flow</a></h2>
-<p>Query → Retrieve → Generate</p>
-<hr>
-<h2 id="benefit"><a class="header" href="#benefit">Benefit</a></h2>
-<ul>
-<li>grounded answers</li>
-<li>more accurate</li>
-<li>context-aware</li>
+<li><strong>User Query</strong>: “How do I fix a leaky pipe?</li>
+<li><strong>Retrieve</strong>: Convert query to vector $\rightarrow$ Find top 3 relevant chunks in the Vector DB.</li>
+<li><strong>Augment</strong>: Feed the retrieved text + the original query into an LLM.</li>
+<li><strong>Generate</strong>: The LLM provides a grounded, conversational answer.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="12-demo-mini-ai-search-app"><a class="header" href="#12-demo-mini-ai-search-app">12. Demo: Mini AI Search App</a></h1>
