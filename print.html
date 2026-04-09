@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-81c151a0.js";
+            window.path_to_searchindex_js = "searchindex-128b4b24.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-0db974b3.js"></script>
+        <script src="toc-47fed0ea.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -190,9 +190,9 @@
 <h4 id="day-1--foundations-of-search-6070-min"><a class="header" href="#day-1--foundations-of-search-6070-min">Day 1 — Foundations of Search (60–70 min)</a></h4>
 <ul>
 <li>Introduction to Search Engine (5 min)</li>
-<li>What is Information Retrieval? (5 min)</li>
-<li>Query Processing ( 10 min)</li>
+<li>Indexing (5 min)</li>
 <li>Inverted Index (15 min)</li>
+<li>Query Processing ( 10 min)</li>
 <li>Fuzzy Search (5 min)</li>
 <li>Limits of Keyword Search (5 min)</li>
 <li>Search at Scale (10 min)</li>
@@ -226,55 +226,34 @@
 <h2 id="querying"><a class="header" href="#querying">Querying</a></h2>
 <p>This happens in real-time when a user types a search. The system takes the user’s input, does some cleaning and then looks up the results in the map we built during indexing to find the best matches.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="what-is-information-retrieval"><a class="header" href="#what-is-information-retrieval">What is Information Retrieval?</a></h1>
-<p>An Information Retrieval (IR) system retrieves relevant documents for a given query.</p>
+<h1 id="indexing-1"><a class="header" href="#indexing-1">Indexing</a></h1>
+<p>This is the “heavy lifting” part of the process where we turn messy, unstructured text into a highly organized, searchable data structure.</p>
+<p>Think of indexing as creating the Inverted Index. While a normal index (like a table of contents) tells you what is in a chapter, an inverted index tells you which “chapters” (documents) contain a specific word.</p>
+<p>Let’s take a small document for example:</p>
+<p><code>Introduction to Programming with Python</code></p>
 <hr>
-<h2 id="key-difference-from-databases"><a class="header" href="#key-difference-from-databases">Key difference from databases</a></h2>
-<ul>
-<li>Databases → exact match</li>
-<li>IR systems → relevance-based</li>
-</ul>
-<hr>
-<h2 id="speed-requirement"><a class="header" href="#speed-requirement">Speed requirement</a></h2>
-<p>Search systems must respond in milliseconds.</p>
-<p>To achieve this:</p>
-<ul>
-<li>heavy computation is done beforehand</li>
-<li>efficient data structures are built</li>
-<li>query-time work is minimized</li>
-</ul>
-<hr>
-<h2 id="pipeline"><a class="header" href="#pipeline">Pipeline</a></h2>
-<p>Query → Process → Retrieve → Rank → Results</p>
-<hr>
-<p>Let’s break it down.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="query-processing"><a class="header" href="#query-processing">Query Processing</a></h1>
-<p>Let’s take:</p>
-<p>best wireless mouse for presentations</p>
-<hr>
-<h2 id="step-1-tokenization"><a class="header" href="#step-1-tokenization">Step 1: Tokenization</a></h2>
-<p>[“best”, “wireless”, “mouse”, “for”, “presentations”]</p>
-<hr>
-<h2 id="step-2-stop-words"><a class="header" href="#step-2-stop-words">Step 2: Stop Words</a></h2>
-<p>Remove common words:</p>
-<p>[“best”, “wireless”, “mouse”, “presentations”]</p>
-<hr>
+<h2 id="step-1-tokenization--normalization"><a class="header" href="#step-1-tokenization--normalization">Step 1: Tokenization &amp; Normalization</a></h2>
+<p><code>["introduction", "to", "programming", "with", "python" ]</code></p>
+<h2 id="step-2-stop-word-removal"><a class="header" href="#step-2-stop-word-removal">Step 2: Stop-word Removal</a></h2>
+<p><code>["introduction", "programming", "python"]</code></p>
 <h2 id="step-3-stemming--lemmatization"><a class="header" href="#step-3-stemming--lemmatization">Step 3: Stemming / Lemmatization</a></h2>
-<p>[“best”, “wireless”, “mouse”, “presentation”]</p>
-<hr>
-<h2 id="step-4-normalization-challenges"><a class="header" href="#step-4-normalization-challenges">Step 4: Normalization Challenges</a></h2>
+<p><code>["introduce", "program", "python"]</code></p>
+<p>Some other transformation techniques that can be considered are:</p>
 <ul>
-<li>AI vs Artificial Intelligence</li>
-<li>TV vs Television</li>
+<li>Handling punctuations: <code>Python!</code> $\rightarrow$ <code>python</code></li>
+<li>Synonym Expansion: <code>laptop</code> $\rightarrow$ <code>[computer, notebook]</code></li>
+<li>De-compounding: <code>smartphone</code> $\rightarrow$ <code>[smart, phone]</code></li>
+<li>N-grams: <code>python</code> $\rightarrow$ <code>[pyt, yth, tho, hon]</code></li>
 </ul>
-<hr>
-<p>Next: how do we efficiently find documents?</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="the-inverted-index"><a class="header" href="#the-inverted-index">The Inverted Index</a></h1>
 <p>Imagine a room full of books.</p>
 <p>You are asked:
 Find all books containing the word “mouse”.</p>
+<p>Doc A: “Introduction to Programming with Python”</p>
+<p>Doc B: “Advanced Programmers Handbook”</p>
+<p>Doc C: “The History of Computer Programs”</p>
+<p>Doc D: “A Guide to Gardening in the Spring”</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -314,6 +293,28 @@ Find all books containing the word “mouse”.</p>
 <li>hash tables</li>
 <li>B-trees</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="query-processing"><a class="header" href="#query-processing">Query Processing</a></h1>
+<p>Let’s take:</p>
+<p>best wireless mouse for presentations</p>
+<hr>
+<h2 id="step-1-tokenization"><a class="header" href="#step-1-tokenization">Step 1: Tokenization</a></h2>
+<p>[“best”, “wireless”, “mouse”, “for”, “presentations”]</p>
+<hr>
+<h2 id="step-2-stop-words"><a class="header" href="#step-2-stop-words">Step 2: Stop Words</a></h2>
+<p>Remove common words:</p>
+<p>[“best”, “wireless”, “mouse”, “presentations”]</p>
+<hr>
+<h2 id="step-3-stemming--lemmatization-1"><a class="header" href="#step-3-stemming--lemmatization-1">Step 3: Stemming / Lemmatization</a></h2>
+<p>[“best”, “wireless”, “mouse”, “presentation”]</p>
+<hr>
+<h2 id="step-4-normalization-challenges"><a class="header" href="#step-4-normalization-challenges">Step 4: Normalization Challenges</a></h2>
+<ul>
+<li>AI vs Artificial Intelligence</li>
+<li>TV vs Television</li>
+</ul>
+<hr>
+<p>Next: how do we efficiently find documents?</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="fuzzy-search--tolerant-retrieval"><a class="header" href="#fuzzy-search--tolerant-retrieval">Fuzzy Search &amp; Tolerant Retrieval</a></h1>
 <p>What happens if the query has a typo?</p>

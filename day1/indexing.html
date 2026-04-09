@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>What is Information Retrieval? - Search to RAG Workshop</title>
+        <title>Indexing - Search to RAG Workshop</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-81c151a0.js";
+            window.path_to_searchindex_js = "../searchindex-128b4b24.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-0db974b3.js"></script>
+        <script src="../toc-47fed0ea.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -174,28 +174,25 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="what-is-information-retrieval"><a class="header" href="#what-is-information-retrieval">What is Information Retrieval?</a></h1>
-<p>An Information Retrieval (IR) system retrieves relevant documents for a given query.</p>
+                        <h1 id="indexing"><a class="header" href="#indexing">Indexing</a></h1>
+<p>This is the “heavy lifting” part of the process where we turn messy, unstructured text into a highly organized, searchable data structure.</p>
+<p>Think of indexing as creating the Inverted Index. While a normal index (like a table of contents) tells you what is in a chapter, an inverted index tells you which “chapters” (documents) contain a specific word.</p>
+<p>Let’s take a small document for example:</p>
+<p><code>Introduction to Programming with Python</code></p>
 <hr>
-<h2 id="key-difference-from-databases"><a class="header" href="#key-difference-from-databases">Key difference from databases</a></h2>
+<h2 id="step-1-tokenization--normalization"><a class="header" href="#step-1-tokenization--normalization">Step 1: Tokenization &amp; Normalization</a></h2>
+<p><code>["introduction", "to", "programming", "with", "python" ]</code></p>
+<h2 id="step-2-stop-word-removal"><a class="header" href="#step-2-stop-word-removal">Step 2: Stop-word Removal</a></h2>
+<p><code>["introduction", "programming", "python"]</code></p>
+<h2 id="step-3-stemming--lemmatization"><a class="header" href="#step-3-stemming--lemmatization">Step 3: Stemming / Lemmatization</a></h2>
+<p><code>["introduce", "program", "python"]</code></p>
+<p>Some other transformation techniques that can be considered are:</p>
 <ul>
-<li>Databases → exact match</li>
-<li>IR systems → relevance-based</li>
+<li>Handling punctuations: <code>Python!</code> $\rightarrow$ <code>python</code></li>
+<li>Synonym Expansion: <code>laptop</code> $\rightarrow$ <code>[computer, notebook]</code></li>
+<li>De-compounding: <code>smartphone</code> $\rightarrow$ <code>[smart, phone]</code></li>
+<li>N-grams: <code>python</code> $\rightarrow$ <code>[pyt, yth, tho, hon]</code></li>
 </ul>
-<hr>
-<h2 id="speed-requirement"><a class="header" href="#speed-requirement">Speed requirement</a></h2>
-<p>Search systems must respond in milliseconds.</p>
-<p>To achieve this:</p>
-<ul>
-<li>heavy computation is done beforehand</li>
-<li>efficient data structures are built</li>
-<li>query-time work is minimized</li>
-</ul>
-<hr>
-<h2 id="pipeline"><a class="header" href="#pipeline">Pipeline</a></h2>
-<p>Query → Process → Retrieve → Rank → Results</p>
-<hr>
-<p>Let’s break it down.</p>
 
                     </main>
 
@@ -205,7 +202,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../day1/tokenization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../day1/inverted_index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -219,7 +216,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../day1/tokenization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../day1/inverted_index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
