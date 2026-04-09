@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-d39b96ea.js";
+            window.path_to_searchindex_js = "searchindex-81c151a0.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-58d53449.js"></script>
+        <script src="toc-0db974b3.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -189,7 +189,7 @@
 <h3 id="agenda"><a class="header" href="#agenda">Agenda</a></h3>
 <h4 id="day-1--foundations-of-search-6070-min"><a class="header" href="#day-1--foundations-of-search-6070-min">Day 1 — Foundations of Search (60–70 min)</a></h4>
 <ul>
-<li>Demo: A Simple Search (5 min)</li>
+<li>Introduction to Search Engine (5 min)</li>
 <li>What is Information Retrieval? (5 min)</li>
 <li>Query Processing ( 10 min)</li>
 <li>Inverted Index (15 min)</li>
@@ -207,34 +207,24 @@
 <li>Demo ( 5 min)</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="demo-a-simple-search"><a class="header" href="#demo-a-simple-search">Demo: A Simple Search</a></h1>
-<p>Let’s start with a simple search system:</p>
-<p>We have a small collection of documents:</p>
+<h1 id="introduction-to-search-engine"><a class="header" href="#introduction-to-search-engine">Introduction to Search Engine</a></h1>
+<p>Three key things for Search:</p>
+<ol>
+<li>Dataset collection ( Crawling )</li>
+<li>Pre-processing ( Indexing )</li>
+<li>Execution ( Querying )</li>
+</ol>
+<h2 id="crawling"><a class="header" href="#crawling">Crawling</a></h2>
+<p>Crawling is the discovery phase. A “crawler” is a script that systematically browses the web (or a local filesystem) to find content.</p>
 <ul>
-<li>Doc1: wireless mouse for laptop</li>
-<li>Doc2: gaming mouse with RGB</li>
-<li>Doc3: bluetooth presentation pointer</li>
-<li>Doc4: budget office mouse</li>
+<li>Web for search engines</li>
+<li>Catalog for e-commerce websites</li>
+<li>Books for library</li>
 </ul>
-<hr>
-<h3 id="try-wireless-mouse"><a class="header" href="#try-wireless-mouse">Try: “wireless mouse”</a></h3>
-<p>We get Doc1.<br>This works because both words are present.</p>
-<hr>
-<h3 id="try-mouse"><a class="header" href="#try-mouse">Try: “mouse”</a></h3>
-<p>We get multiple documents.<br>This works because more documents contain the word “mouse”.</p>
-<hr>
-<h3 id="try-laptop-mouse"><a class="header" href="#try-laptop-mouse">Try: “laptop mouse”</a></h3>
-<p>We only get documents containing both words.<br>This system performs an AND operation.</p>
-<hr>
-<h3 id="try-wirless-mouse"><a class="header" href="#try-wirless-mouse">Try: “wirless mouse”</a></h3>
-<p>No results.</p>
-<p>Even though the intent is clear, the system fails due to exact matching.</p>
-<hr>
-<h3 id="try-device-for-presentations"><a class="header" href="#try-device-for-presentations">Try: “device for presentations”</a></h3>
-<p>No results again.</p>
-<p>Even though Doc3 is relevant.</p>
-<hr>
-<p>Let’s now understand what’s happening internally.</p>
+<h2 id="indexing"><a class="header" href="#indexing">Indexing</a></h2>
+<p>Indexing is a pre-processing step before a user could ever search anything. Since the number of documents can be huge in billions, real time search will take a lot of time. So, we need to pre-process those documents so that search results happen in milliseconds.</p>
+<h2 id="querying"><a class="header" href="#querying">Querying</a></h2>
+<p>This happens in real-time when a user types a search. The system takes the user’s input, does some cleaning and then looks up the results in the map we built during indexing to find the best matches.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="what-is-information-retrieval"><a class="header" href="#what-is-information-retrieval">What is Information Retrieval?</a></h1>
 <p>An Information Retrieval (IR) system retrieves relevant documents for a given query.</p>
