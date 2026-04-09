@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bcbaf73c.js";
+            window.path_to_searchindex_js = "searchindex-3bd8a7b7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-64d7a585.js"></script>
@@ -443,9 +443,9 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # 2. Define our "documents"
 sentences = [
-    "The cat sits outside", 
-    "A man is playing guitar", 
-    "The feline is resting outdoors"
+    "High-precision wireless gaming mouse with RGB",
+    "Ergonomic vertical mouse for wrist pain relief",
+    "Travel-friendly Bluetooth mouse with silent clicks"
 ]
 
 # 3. Encode the sentences into vectors
@@ -502,7 +502,8 @@ print(f"Embedding shape: {embeddings.shape}")
 <p>Traditional search → exact lookup<br>Vector search → nearest neighbor search</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="10-retrieval-augmented-generation"><a class="header" href="#10-retrieval-augmented-generation">10. Retrieval-Augmented Generation</a></h1>
-<p>Semantic search is the “Engine” inside the Retrieval-Augmented Generation (RAG) pattern.</p>
+<p>Foundation models have broad knowledge, but can lack depth in specialized domains. This limitation can result in responses that are incomplete or irrelevant. This behavior is known as “hallucination.”</p>
+<p>Retrieval-augmented generation, or RAG, is a technique that uses authoritative, external data to improve the accuracy, relevancy, and usefulness of a model’s output.</p>
 <hr>
 <ul>
 <li><strong>User Query</strong>: “How do I fix a leaky pipe?</li>
@@ -510,6 +511,7 @@ print(f"Embedding shape: {embeddings.shape}")
 <li><strong>Augment</strong>: Feed the retrieved text + the original query into an LLM.</li>
 <li><strong>Generate</strong>: The LLM provides a grounded, conversational answer.</li>
 </ul>
+<p><img src="day2/rag.png" alt="alt text"></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="12-demo-mini-ai-search-app"><a class="header" href="#12-demo-mini-ai-search-app">12. Demo: Mini AI Search App</a></h1>
 <p>Modern systems combine multiple techniques:</p>
