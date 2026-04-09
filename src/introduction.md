@@ -33,4 +33,4 @@ This workshop explores how search systems work, from traditional keyword-based a
 - Vector Databases (10 min)
 - Vector Search (15 min)
 - RAG ( Retrieval-Augmented Generation) (10 min)
-- Demo: Mini AI Search App ( 5 min)
+- Demo ( 5 min)

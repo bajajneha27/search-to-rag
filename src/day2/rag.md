@@ -1,5 +1,5 @@
 
-# 10. Retrieval-Augmented Generation
+# Retrieval-Augmented Generation
 
 Foundation models have broad knowledge, but can lack depth in specialized domains. This limitation can result in responses that are incomplete or irrelevant. This behavior is known as “hallucination.”
 

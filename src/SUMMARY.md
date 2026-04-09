@@ -19,4 +19,4 @@
 - [Vector Databases](day2/vector_databases.md)
 - [Vector Search](day2/evolution.md)
 - [Retrieval-Augmented Generation](day2/rag.md)
-- [Demo: Mini AI Search App](day2/modern.md)
+- [Demo](day2/modern.md)
