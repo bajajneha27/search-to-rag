@@ -26,6 +26,7 @@ Let's take a small document for example:
 Some other transformation techniques that can be considered are:
 
 - Handling punctuations: `Python!` $\rightarrow$ `python`
+- Handling abbreviations: `AI` $\rightarrow$ `Artificial Intelligence`
 - Synonym Expansion: `laptop` $\rightarrow$ `[computer, notebook]`
 - De-compounding: `smartphone` $\rightarrow$ `[smart, phone]`
 - N-grams: `python` $\rightarrow$ `[pyt, yth, tho, hon]`
