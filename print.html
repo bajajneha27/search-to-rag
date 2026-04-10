@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-3f1af10d.js";
+            window.path_to_searchindex_js = "searchindex-7dd0a5f2.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-268410e3.js"></script>
+        <script src="toc-dbb139f1.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -202,7 +202,6 @@
 <li>Introduction: Beyond Keywords (5 min)</li>
 <li>Embeddings (15 min)</li>
 <li>Vector Databases (10 min)</li>
-<li>Vector Search (15 min)</li>
 <li>RAG ( Retrieval-Augmented Generation) (10 min)</li>
 <li>Demo ( 5 min)</li>
 </ul>
@@ -238,6 +237,7 @@
 <p><code>["introduction", "programming", "python"]</code></p>
 <h2 id="step-3-stemming--lemmatization"><a class="header" href="#step-3-stemming--lemmatization">Step 3: Stemming / Lemmatization</a></h2>
 <p><code>["introduce", "program", "python"]</code></p>
+<hr>
 <p>Some other transformation techniques that can be considered are:</p>
 <ul>
 <li>Handling punctuations: <code>Python!</code> –&gt; <code>python</code></li>
@@ -362,51 +362,17 @@ Result : <code>[book, program, python]</code></li>
 <h2 id="caching-and-global-load-balancing"><a class="header" href="#caching-and-global-load-balancing">Caching and Global Load Balancing</a></h2>
 <p>To stay fast, Google uses Google Front Ends (GFEs) and heavy caching. If 1,000,000 people search for “weather” in the same minute, Google doesn’t re-calculate the search every time; it serves a cached result from a server physically close to the user.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="demo"><a class="header" href="#demo">Demo</a></h1>
-<p>Let’s revisit a query:</p>
-<p>“device for presentations”</p>
-<p>Traditional search relies on Lexical Overlap (TF-IDF, BM25). While fast, it suffers from two major flaws:</p>
-<ul>
-<li>
-<p><strong>The Synonym Problem</strong>: Searching “feline” won’t find a document containing only the word “cat.”</p>
-</li>
-<li>
-<p><strong>Polysemy</strong>: The word “bank” means something different in “river bank” vs. “investment bank.”</p>
-</li>
-</ul>
-<p>Semantic Search shifts the focus from matching <strong>words</strong> to matching <strong>meaning</strong> (intent and context).</p>
-<pre><code class="language-python">from sentence_transformers import SentenceTransformer, util
-import torch
-
-# 1. Initialize the Open-Source Model
-model = SentenceTransformer('all-MiniLM-L6-v2')
-
-# 2. Our "Database" (The Corpus)
-catalog = [
-    "Oak wood dining table with 6 chairs",
-    "Memory foam queen mattress with cooling gel",
-    "Ergonomic office chair with lumbar support",
-    "Modern velvet sofa in midnight blue",
-    "Folding metal desk for small spaces"
-]
-
-# 3. Create the Embeddings
-catalog_embeddings = model.encode(catalog, convert_to_tensor=True)
-
-# 4. User Search
-query = "something comfortable to sleep on"
-query_embedding = model.encode(query, convert_to_tensor=True)
-
-# 5. Compute Similarity (using top_k=2)
-# This returns the scores and the index positions of the matches
-hits = util.semantic_search(query_embedding, catalog_embeddings, top_k=2)
-
-print("Search Results:")
-for hit in hits[0]:
-    print(f"- {catalog[hit['corpus_id']]} (Score: {hit['score']:.4f})")
-</code></pre>
+<h1 id="introduction-to-semantic-search"><a class="header" href="#introduction-to-semantic-search">Introduction to Semantic Search</a></h1>
+<p>Traditional search is like looking through a phone book; if you don’t have the exact spelling, you’re stuck. Semantic search is more like talking to a librarian who understands that when you ask for “something about giant reptiles,” you’re probably looking for books on dinosaurs. 🦖</p>
+<h2 id="the-semantic-search-flow"><a class="header" href="#the-semantic-search-flow">The Semantic Search Flow</a></h2>
+<ol>
+<li><strong>Crawling &amp; Ingestion</strong>: The system gathers data (text, images, or video) from various sources.</li>
+<li><strong>Vector Encoding (The Transformer Phase)</strong>: Instead of just making a list of words, a Transformer model (like BERT) reads the content and converts it into a Dense Vector (a long list of numbers). This vector represents the meaning of the document in a high-dimensional space.</li>
+<li><strong>Vector Indexing</strong>: These vectors are stored in a specialized Vector Database (like Pinecone, Milvus, or Weaviate). The database organizes them so that “similar meanings” are physically close to each other.</li>
+<li><strong>Semantic Querying</strong>: When you search, your query is also converted into a vector using the same Transformer. The system then looks for the “nearest neighbors” in the vector space—finding documents that are mathematically closest to your intent.</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="8-from-words-to-meaning-embeddings"><a class="header" href="#8-from-words-to-meaning-embeddings">8. From Words to Meaning: Embeddings</a></h1>
+<h1 id="words-to-meaning-embeddings"><a class="header" href="#words-to-meaning-embeddings">Words to Meaning: Embeddings</a></h1>
 <p>At the heart of AI search is the transformation of unstructured text into high-dimensional numerical vectors.</p>
 <p>An embedding is a vector (list) of floating point numbers. The distance between two vectors measures their relatedness. Small distances suggest high relatedness and large distances suggest low relatedness.</p>
 <hr>
@@ -472,19 +438,6 @@ print(f"Embedding shape: {embeddings.shape}")
 <p><strong>AlloyDB</strong>: Handles vector at scale using <code>pgvector</code> extension. It introduces a <code>VECTOR</code> column. It supports IVFFlat and HNSW directly within the SQL environment. You use standard SQL with vector operators (like &lt;-&gt; for Euclidean distance or &lt;#&gt; for inner product).</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="vector-search"><a class="header" href="#vector-search">Vector Search</a></h1>
-<p>When we move from keyword search to semantic search, we stop looking for exact string matches and start looking for the nearest neighbors in a high-dimensional space.</p>
-<hr>
-<h2 id="process"><a class="header" href="#process">Process</a></h2>
-<ol>
-<li>Convert query to vector</li>
-<li>Search for nearest vectors</li>
-<li>Retrieve similar documents</li>
-</ol>
-<hr>
-<h2 id="key-difference"><a class="header" href="#key-difference">Key Difference</a></h2>
-<p>Traditional search → exact lookup<br>Vector search → nearest neighbor search</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="retrieval-augmented-generation"><a class="header" href="#retrieval-augmented-generation">Retrieval-Augmented Generation</a></h1>
 <p>Foundation models have broad knowledge, but can lack depth in specialized domains. This limitation can result in responses that are incomplete or irrelevant. This behavior is known as “hallucination.”</p>
