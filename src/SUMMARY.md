@@ -19,4 +19,3 @@
 - [Embeddings](session2/embeddings.md)
 - [Vector Databases](session2/vector_databases.md)
 - [Retrieval-Augmented Generation](session2/rag.md)
-- [Demo](session2/demo.md)

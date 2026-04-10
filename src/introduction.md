@@ -33,4 +33,3 @@ This workshop explores how search systems work, from traditional keyword-based a
 - Embeddings (10 min)
 - Vector Databases (10 min)
 - RAG ( Retrieval-Augmented Generation) (10 min)
-- Demo ( 5 min)

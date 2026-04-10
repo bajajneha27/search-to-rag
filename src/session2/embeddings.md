@@ -51,4 +51,6 @@ To determine "relevance," we calculate the distance between the query vector (\\
 
 \\(\text{sim}(q, d) = \frac{q \cdot d}{\|q\| \|d\|}\\)
 
+
+
 - **Euclidean Distance (\\(L2\\))**: Measures the straight-line distance.
