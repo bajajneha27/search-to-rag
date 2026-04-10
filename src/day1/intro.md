@@ -15,7 +15,6 @@ Crawling is the discovery phase. A "crawler" is a script that systematically bro
 - Catalog for e-commerce websites
 - Books for library 
 
-
 ## Indexing
 
 Indexing is a pre-processing step before a user could ever search anything. Since the number of documents can be huge in billions, real time search will take a lot of time. So, we need to pre-process those documents so that search results happen in milliseconds.

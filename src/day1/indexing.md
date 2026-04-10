@@ -23,6 +23,8 @@ Let's take a small document for example:
 
 `["introduce", "program", "python"]`
 
+---
+
 Some other transformation techniques that can be considered are:
 
 - Handling punctuations: `Python!` --> `python`

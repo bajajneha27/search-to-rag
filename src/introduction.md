@@ -31,6 +31,5 @@ This workshop explores how search systems work, from traditional keyword-based a
 - Introduction: Beyond Keywords (5 min)
 - Embeddings (15 min)
 - Vector Databases (10 min)
-- Vector Search (15 min)
 - RAG ( Retrieval-Augmented Generation) (10 min)
 - Demo ( 5 min)

@@ -1,5 +1,5 @@
 
-# 8. From Words to Meaning: Embeddings
+# Words to Meaning: Embeddings
 
 At the heart of AI search is the transformation of unstructured text into high-dimensional numerical vectors.
 

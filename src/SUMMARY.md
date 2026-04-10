@@ -14,9 +14,8 @@
 
 # Day 2 — The RAG Solution
 
-- [Introduction: Beyond Keywords](day2/demo.md)
+- [Introduction: Beyond Keywords](day2/introduction.md)
 - [Embeddings](day2/embeddings.md)
 - [Vector Databases](day2/vector_databases.md)
-- [Vector Search](day2/evolution.md)
 - [Retrieval-Augmented Generation](day2/rag.md)
 - [Demo](day2/modern.md)
